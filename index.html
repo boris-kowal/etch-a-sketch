@@ -35,13 +35,9 @@ function reset() {
        container.removeChild(square);
     });
 }
-const button = document.querySelector("button");
-button.addEventListener('click', () => {
-     let size = prompt('how many squares per side do you want to make the new grid?(enter only numbers < 100)');
-     reset();
-     createMatrix(size);
-     const squares = document.querySelectorAll('.square');
-squares.forEach((square) => {
+function color() {
+  const squares = document.querySelectorAll('.square');
+  squares.forEach((square) => {
     square.addEventListener('mouseover', () => {
         let r = 255*Math.random();
         let g = 255*Math.random();
@@ -49,6 +45,13 @@ squares.forEach((square) => {
         square.style.backgroundColor = `rgb(${r}, ${g}, ${b} )`;
     });
 }); 
+}
+const button = document.querySelector("button");
+button.addEventListener('click', () => {
+     let size = prompt('how many squares per side do you want to make the new grid?(enter only numbers < 100)');
+     reset();
+     createMatrix(size);
+     color();
 })
 
 
