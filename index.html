@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<HEAD>
+    <title>Etch a Sketch</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="my-style.css" />
+</HEAD>
+<body>
+<div id="container"></div>
+<button>Change size</button>
+
+
+
+
+
+
+<script>
+const container = document.querySelector('#container');
+
+function createMatrix(size) {
+  for (i = 0; i < size*size; i++) {
+    let square = document.createElement('div');
+    square.classList.add('square');
+    container.appendChild(square);
+  }
+  container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+}
+
+
+function reset() {
+    const squares = document.querySelectorAll('.square');
+    squares.forEach((square) => {
+       container.removeChild(square);
+    });
+}
+const button = document.querySelector("button");
+button.addEventListener('click', () => {
+     let size = prompt('how many squares per side do you want to make the new grid?');
+     reset();
+     createMatrix(size);
+     const squares = document.querySelectorAll('.square');
+squares.forEach((square) => {
+    square.addEventListener('mouseover', () => {
+        square.classList.add('black');
+    });
+}); 
+})
+
+
+
+</script>
+</body>
+</html>
